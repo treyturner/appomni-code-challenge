@@ -155,11 +155,25 @@
   </main>
 
   <script>
+    const usernameError = Object.assign(document.createElement("div"), {
+      id: "username-error",
+      classList: "error_message",
+      textContent: "enter a username",
+    });
+
     document.querySelector('form').addEventListener('submit', (e) => {
       e.preventDefault();
       const { username, password } = e.target;
-      console.log(username.value);
-      console.log(password.value);
+
+      if (username.value.length < 1) {
+        document.getElementsByTagName("main")[0].appendChild(usernameError);
+        document.getElementsByName("username")[0].classList.add("error");
+      } else {
+        if (document.getElementById("username-error")) {
+          document.getElementById("username-error").remove();
+        }
+        document.getElementsByName("username")[0].classList.remove("error");
+      }
     });
   </script>
 
