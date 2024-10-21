@@ -12,7 +12,7 @@ describe('Signup', () => {
   });
 
   describe('form validation displays an error when', () => {
-    xit('the username is empty', () => {
+    it('the username is empty', () => {
       cy.findByRole('button', { text: 'Submit' }).click();
       cy.findByText('enter a username').should('have.class', 'error_message');
       cy.get('input[name=username]').should('have.class', 'error');
